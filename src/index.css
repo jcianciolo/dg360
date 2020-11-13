@@ -13,7 +13,32 @@ code {
     monospace;
 }
 
-.button {
+.counter {
   display: flex;
-  padding: 10px;
+  margin-bottom: 20px;
+}
+
+.count {
+  margin: 0px;
+  padding: 5px 5px;
+}
+
+button {
+  margin: 0px 10px;
+  border: 1px solid black;
+  cursor: pointer;
+  background-color: red;
+  color: white;
+  font-weight: bold;
+}
+
+button:disabled {
+  opacity: 0.4;
+}
+
+.bonus {
+}
+
+.score {
+  align-content: right;
 }

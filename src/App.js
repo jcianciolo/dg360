@@ -7,12 +7,14 @@ function App() {
 
   return (
     <div className="App">
+      <h4>Putts Made</h4>
+      <Counter firstBonus={2} lastBonus={2} perfectBonus={5} total={total} setTotal={setTotal} />
+      <Counter firstBonus={2} lastBonus={3} perfectBonus={10} total={total} setTotal={setTotal} />
+      <Counter firstBonus={3} lastBonus={4} perfectBonus={15} total={total} setTotal={setTotal} />
+      <Counter firstBonus={5} lastBonus={6} perfectBonus={20} total={total} setTotal={setTotal} />
+      <Counter final={true} firstBonus={8} lastBonus={10} perfectBonus={25} total={total} setTotal={setTotal} />
       <h1>Total: { total }</h1>
-      <Counter firstBonus={1} lastBonus={2} perfectBonus={3} total={total} setTotal={setTotal} />
-      <Counter firstBonus={2} lastBonus={2} perfectBonus={3} total={total} setTotal={setTotal} />
-      <Counter firstBonus={3} lastBonus={2} perfectBonus={3} total={total} setTotal={setTotal} />
-      <Counter firstBonus={3} lastBonus={2} perfectBonus={3} total={total} setTotal={setTotal} />
-      <Counter firstBonus={3} lastBonus={2} perfectBonus={3} total={total} setTotal={setTotal} />
+      <h1>Score: { (total * 2) }</h1>
     </div>
   );
 }
