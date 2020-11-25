@@ -3,10 +3,11 @@ import React, { useState } from 'react'
 function Counter({ total, setTotal, firstBonus, lastBonus, perfectBonus, final }) {
     const [count, setCount] = useState(0);
     const [score, setScore] = useState(0);
+    let bonus;
 
     const handleAddOne = () => {
         if (final) {
-            setCount(count + 2);
+            setCount(count + 1);
             setTotal(total + 2);
             setScore(score + 2);
         }
@@ -20,7 +21,7 @@ function Counter({ total, setTotal, firstBonus, lastBonus, perfectBonus, final }
     
     const handleMinusOne = () => {
         if (final) {
-            setCount(count - 2);
+            setCount(count - 1);
             setTotal(total - 2);
             setScore(score - 2);
         }
@@ -31,45 +32,65 @@ function Counter({ total, setTotal, firstBonus, lastBonus, perfectBonus, final }
         }
     }
 
-    const handleFirstBonus = (e) => {
+    const handleBonus = (e) => {
+        console.log(e.target.name);
+        if (e.target.name === "First Made Bonus") {
+            bonus = firstBonus;
+        } else if (e.target.name === "Last Made Bonus") {
+            bonus = lastBonus;
+        } else {
+            bonus = perfectBonus;
+        }
+
         if (e.target.checked === true) {
-            setScore(score + firstBonus);
-            setTotal(total + firstBonus);
+            setScore(score + bonus);
+            setTotal(total + bonus);
         }
 
         else {
-            setScore(score - firstBonus);
-            setTotal(total - firstBonus);
+            setScore(score - bonus);
+            setTotal(total - bonus);
         }
+        // if (e.target.checked === true) {
+        //     setScore(score + firstBonus);
+        //     setTotal(total + firstBonus);
+        // }
+
+        // else {
+        //     setScore(score - firstBonus);
+        //     setTotal(total - firstBonus);
+        // }
 
     }
 
-    const handleLastBonus = (e) => {
-        if (e.target.checked === true) {
-            setScore(score + lastBonus);
-            setTotal(total + lastBonus);
-        }
+    // const handleLastBonus = (e) => {
+    //     console.log(e.target.name);
+    //     if (e.target.checked === true) {
+    //         setScore(score + lastBonus);
+    //         setTotal(total + lastBonus);
+    //     }
 
-        else {
-            setScore(score - lastBonus);
-            setTotal(total - lastBonus);
-        }
+    //     else {
+    //         setScore(score - lastBonus);
+    //         setTotal(total - lastBonus);
+    //     }
 
 
-    }
+    // }
     
-    const handlePerfectBonus = (e) => {
-        if (e.target.checked === true) {
-            setScore(score + perfectBonus);
-            setTotal(total + perfectBonus);
-        }
+    // const handlePerfectBonus = (e) => {
+    //     console.log(e.target.name);
+    //     if (e.target.checked === true) {
+    //         setScore(score + perfectBonus);
+    //         setTotal(total + perfectBonus);
+    //     }
 
-        else {
-            setScore(score - perfectBonus);
-            setTotal(total - perfectBonus);
-        }
+    //     else {
+    //         setScore(score - perfectBonus);
+    //         setTotal(total - perfectBonus);
+    //     }
 
-    }
+    // }
 
     return (
         <>
@@ -89,16 +110,16 @@ function Counter({ total, setTotal, firstBonus, lastBonus, perfectBonus, final }
                 </button>
                 <div className="bonus">
                     <div>
-                        <input type="checkbox" onClick={handleFirstBonus} name="First Made Bonus" />
-                        <label for="First Made Bonus">First Made Bonus</label>
+                        <input type="checkbox" onClick={handleBonus} name="First Made Bonus" />
+                        <label>First In +{firstBonus}</label>
                     </div>
                     <div>
-                        <input type="checkbox" onClick={handleLastBonus} name="Last Made Bonus" />
-                        <label for="Last Made Bonus">Last Made Bonus</label>
+                        <input type="checkbox" onClick={handleBonus} name="Last Made Bonus" />
+                        <label>Last In +{lastBonus}</label>
                     </div>
                     <div>
-                        <input type="checkbox" onClick={handlePerfectBonus} name="Perfect Bonus" />
-                        <label for="Perfect Bonus">All Made Bonus</label>
+                        <input type="checkbox" onClick={handleBonus} name="Perfect Bonus" />
+                        <label>All Made +{perfectBonus}</label>
                     </div>
                 </div>
                 <h3 className="score">Round Total: {score}</h3>
